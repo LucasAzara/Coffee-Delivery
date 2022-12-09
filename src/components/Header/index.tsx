@@ -21,7 +21,9 @@ export function Header() {
           <p>Goiânia, GO</p>
         </Location>
         <Cart>
-          <ShoppingCart weight="fill" />
+          <NavLink to="/checkout">
+            <ShoppingCart weight="fill" />
+          </NavLink>
         </Cart>
       </ButtonContainer>
     </HeadingContainer>

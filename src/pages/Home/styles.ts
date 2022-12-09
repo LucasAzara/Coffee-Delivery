@@ -83,7 +83,7 @@ export const CoffeeTitle = styled.h1`
 
 export const CoffeeList = styled.ul`
   display: grid;
-  grid-template-columns: repeat(4, calc((100% / 4)));
+  grid-template-columns: repeat(4, calc((100% - 96px) / 4));
   gap: 40px 32px;
 
   margin-top: 3rem;
