@@ -8,9 +8,22 @@ import {
   Time,
   Box,
   CoffeCup,
+  CoffeeTitle,
+  CoffeeList,
+  CoffeInfo,
+  CoffeeQuantity,
+  CoffeeShop,
+  CoffeeCheckoutButton,
 } from './styles'
 // Icons
-import { ShoppingCart, Coffee, Package, Timer } from 'phosphor-react'
+import {
+  ShoppingCart,
+  Coffee,
+  Package,
+  Timer,
+  Plus,
+  Minus,
+} from 'phosphor-react'
 // Img
 import CoffeeCup from '../../assets/CoffeeCup.svg'
 // Coffee Images
@@ -214,6 +227,57 @@ export function Home() {
         </div>
         <img src={CoffeeCup} alt="Coffee Cup with Coffee Beans around it" />
       </Intro>
+      <div>
+        <CoffeeTitle>Nossos cafés</CoffeeTitle>
+        <CoffeeList>
+          {Coffees.map((coffee) => {
+            return (
+              <li key={coffee.id}>
+                {/* Preview */}
+                <img src={coffee.preview} alt={`${coffee.title}in a cup`} />
+                {/* Tags */}
+                <CoffeInfo>
+                  <div>
+                    {coffee.tags.map((tag, index) => {
+                      return (
+                        <span key={`${tag}${index}`}>{tag.toUpperCase()}</span>
+                      )
+                    })}
+                  </div>
+                  <div>
+                    <h3>{coffee.title}</h3>
+                    <p>{coffee.description}</p>
+                  </div>
+                </CoffeInfo>
+                <CoffeeShop>
+                  <p>
+                    R$
+                    <span>
+                      {coffee.price.toLocaleString('pt-BR', {
+                        minimumFractionDigits: 2,
+                      })}
+                    </span>
+                  </p>
+                  <div>
+                    <CoffeeQuantity>
+                      <button>
+                        <Minus />
+                      </button>
+                      {coffee.quantity}
+                      <button>
+                        <Plus />
+                      </button>
+                    </CoffeeQuantity>
+                    <CoffeeCheckoutButton>
+                      <ShoppingCart weight="fill" />
+                    </CoffeeCheckoutButton>
+                  </div>
+                </CoffeeShop>
+              </li>
+            )
+          })}
+        </CoffeeList>
+      </div>
     </HomeContainer>
   )
 }
