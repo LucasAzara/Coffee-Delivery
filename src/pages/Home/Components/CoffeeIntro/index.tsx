@@ -15,6 +15,7 @@ export function CoffeeIntro() {
   return (
     <Intro>
       <div>
+        {/* Introduction Title */}
         <IntroHeading>
           <h1>Encontre o Café perfeito para qualquer hora do dia</h1>
           <h3>
@@ -22,6 +23,7 @@ export function CoffeeIntro() {
             hora
           </h3>
         </IntroHeading>
+        {/* Introdution Quick Info */}
         <IntroIcons>
           <p>
             <Shopping>
@@ -49,6 +51,7 @@ export function CoffeeIntro() {
           </p>
         </IntroIcons>
       </div>
+      {/* Introduction Image */}
       <img src={CoffeeCup} alt="Coffee Cup with Coffee Beans around it" />
     </Intro>
   )

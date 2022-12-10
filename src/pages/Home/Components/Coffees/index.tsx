@@ -37,6 +37,7 @@ interface ICoffee {
 }
 
 export function Coffees() {
+  // Mock Coffee Data
   const Coffees: ICoffee[] = [
     {
       id: '1',
