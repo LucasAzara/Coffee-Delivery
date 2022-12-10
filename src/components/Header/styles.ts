@@ -31,7 +31,7 @@ const ButtonBase = styled.button`
 
 export const Cart = styled(ButtonBase)`
   background-color: ${(props) => props.theme['yellow-300']};
-
+  height: 100%;
   svg {
     color: ${(props) => props.theme['yellow-500']};
     font-size: 1.375rem;

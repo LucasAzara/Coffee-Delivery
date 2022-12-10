@@ -20,11 +20,11 @@ export function Header() {
           <MapPin weight="fill" />
           <p>Goiânia, GO</p>
         </Location>
-        <Cart>
-          <NavLink to="/checkout">
+        <NavLink to="/checkout">
+          <Cart>
             <ShoppingCart weight="fill" />
-          </NavLink>
-        </Cart>
+          </Cart>
+        </NavLink>
       </ButtonContainer>
     </HeadingContainer>
   )
