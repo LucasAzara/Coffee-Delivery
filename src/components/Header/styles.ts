@@ -32,6 +32,14 @@ const ButtonBase = styled.button`
 export const Cart = styled(ButtonBase)`
   background-color: ${(props) => props.theme['yellow-300']};
   height: 100%;
+
+  &:hover {
+    background-color: ${(props) => props.theme['yellow-500']};
+    svg {
+      color: ${(props) => props.theme['yellow-300']};
+    }
+  }
+
   svg {
     color: ${(props) => props.theme['yellow-500']};
     font-size: 1.375rem;
@@ -40,6 +48,17 @@ export const Cart = styled(ButtonBase)`
 
 export const Location = styled(ButtonBase)`
   background-color: ${(props) => props.theme['purple-300']};
+
+  &:hover {
+    background-color: ${(props) => props.theme['purple-500']};
+    svg {
+      color: ${(props) => props.theme['purple-300']};
+    }
+    p {
+      color: ${(props) => props.theme['purple-300']};
+    }
+  }
+
   svg {
     color: ${(props) => props.theme['purple-500']};
     font-size: 1.375rem;
