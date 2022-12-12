@@ -1,12 +1,12 @@
 // Components
 import { CurrencyDollar, MapPinLine } from 'phosphor-react'
+import { CheckoutItems } from './Components/CheckoutItems'
 import { UserAddress } from './Components/UserAddress'
 import { UserPayment } from './Components/UserPayment'
 // CSS
 import {
   CheckoutContainer,
   CheckoutTitle,
-  ItemData,
   PurpleIcon,
   UserData,
   UserInformation,
@@ -50,9 +50,10 @@ export function Checkout() {
         </UserInformation>
       </UserData>
       {/* Coffee Data */}
-      <ItemData>
+      <UserData>
         <CheckoutTitle>Café selecionados</CheckoutTitle>
-      </ItemData>
+        <CheckoutItems />
+      </UserData>
     </CheckoutContainer>
   )
 }
