@@ -32,7 +32,7 @@ export function CheckoutItems() {
         {/* Total Overall Price */}
         <p className="bold">Total</p>
         <p className="bold">
-          R$ {priceToString(coffeePrice + coffeeLength === 0 ? 0 : 3.5)}
+          R$ {priceToString(coffeePrice + 1.75 * coffeeLength)}
         </p>
       </CheckoutTotal>
       <CheckoutButton type="submit">Confirmar Pedido</CheckoutButton>
