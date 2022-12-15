@@ -1,4 +1,8 @@
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
+import { useContext, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
+import { CoffeeContext } from '../../../../context/DeliveryData'
+import { IAddress } from '../../../../reducers/cart/action'
 import {
   DeliveryBorder,
   DeliveryInfo,
@@ -8,30 +12,18 @@ import {
   TimeIcon,
 } from './styles'
 
-interface IDelivery {
-  location: {
-    street: string
-    number: number | 'S/N'
-    sector: string
-    city: string
-    state: string
-  }
-  timeEstimation: number[]
-  paymentMethod: 'Cartão de Crédito' | 'Cartão de Débito' | 'Dinheiro'
-}
-
 export function DeliveryInformation() {
+  const { handleResetAction } = useContext(CoffeeContext)
+
+  // Get Address and PaymentMethod from location
+  const { state } = useLocation()
+
+  // Reset Context on Load
+  handleResetAction()
+
   // Mock Data
-  const deliveryData: IDelivery = {
-    location: {
-      street: 'Rua Jão Daniel Martinelli',
-      number: 102,
-      sector: 'Farrapos',
-      city: 'Porto Alegre',
-      state: 'RS',
-    },
+  const deliveryData = {
     timeEstimation: [20, 30],
-    paymentMethod: 'Cartão de Crédito',
   }
 
   return (
@@ -46,9 +38,9 @@ export function DeliveryInformation() {
           </LocationIcon>
           <div>
             <p>
-              Entrega em <b>{StreetLocation(deliveryData)}</b>
+              Entrega em <b>{StreetLocation(state.address)}</b>
             </p>
-            <p>{CityLocation(deliveryData)}</p>
+            <p>{CityLocation(state.address)}</p>
           </div>
         </DeliveryInfo>
         {/* Time */}
@@ -59,7 +51,7 @@ export function DeliveryInformation() {
           <div>
             <p>Previsão de entrega</p>
             <p>
-              <b>{EstimatedTime(deliveryData)}</b>
+              <b>{EstimatedTime(deliveryData.timeEstimation)}</b>
             </p>
           </div>
         </DeliveryInfo>
@@ -71,7 +63,7 @@ export function DeliveryInformation() {
           <div>
             <p>Pagamento na entrega</p>
             <p>
-              <b>{deliveryData.paymentMethod}</b>
+              <b>{state.paymentMethod}</b>
             </p>
           </div>
         </DeliveryInfo>
@@ -82,12 +74,12 @@ export function DeliveryInformation() {
 
 // String Functions to fill out info
 
-const StreetLocation = ({ location }: IDelivery) => {
-  return `${location.street}, ${location.number}`
+const StreetLocation = (address: IAddress) => {
+  return `${address.streetName}, ${address.streetNumber}`
 }
-const CityLocation = ({ location }: IDelivery) => {
-  return `${location.sector} - ${location.city}, ${location.state}`
+const CityLocation = (address: IAddress) => {
+  return `${address.sector} - ${address.city}, ${address.state}`
 }
-const EstimatedTime = ({ timeEstimation }: IDelivery) => {
+const EstimatedTime = (timeEstimation: Array<number>) => {
   return `${timeEstimation.at(0)} min - ${timeEstimation.at(-1)} min`
 }

@@ -32,6 +32,7 @@ const ButtonBase = styled.button`
 export const Cart = styled(ButtonBase)`
   background-color: ${(props) => props.theme['yellow-300']};
   height: 100%;
+  position: relative;
 
   &:hover {
     background-color: ${(props) => props.theme['yellow-500']};
@@ -43,6 +44,17 @@ export const Cart = styled(ButtonBase)`
   svg {
     color: ${(props) => props.theme['yellow-500']};
     font-size: 1.375rem;
+  }
+
+  span {
+    position: absolute;
+    background-color: ${(props) => props.theme['yellow-700']};
+    border-radius: 999px;
+    font-size: 0.75rem;
+    top: -5px;
+    right: -10px;
+    padding: 4px 8px;
+    color: ${(props) => props.theme.white};
   }
 `
 

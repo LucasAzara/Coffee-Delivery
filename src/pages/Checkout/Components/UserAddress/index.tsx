@@ -1,27 +1,61 @@
-import { MapPinLine } from 'phosphor-react'
-import { YellowIcon } from '../../styles'
+import { useFormContext } from 'react-hook-form'
 import { UserForm } from './styles'
 
+// Create a verfication for Form and a way to store them into context
+
 export function UserAddress() {
+  const { register } = useFormContext()
+
   return (
     <UserForm>
-      <input type="text" name="CEP" id="userCep" placeholder="CEP" />
-      <input type="text" name="Street" id="userStreet" placeholder="Rua" />
       <input
         type="text"
-        name="StreetNumber"
+        id="userCep"
+        placeholder="CEP"
+        required
+        {...register('userCep')}
+      />
+      <input
+        type="text"
+        id="userStreet"
+        placeholder="Rua"
+        required
+        {...register('userStreet')}
+      />
+      <input
+        type="text"
         id="userStreetNumber"
         placeholder="Número"
+        required
+        {...register('userStreetNumber')}
       />
       <input
         type="text"
-        name="Extra"
         id="userExtra"
         placeholder="Complemento"
+        {...register('userExtra')}
       />
-      <input type="text" name="Sector" id="userSector" placeholder="Bairro" />
-      <input type="text" name="City" id="userCity" placeholder="Cidade" />
-      <input type="text" name="State" id="userState" placeholder="UF" />
+      <input
+        type="text"
+        id="userSector"
+        placeholder="Bairro"
+        required
+        {...register('userSector')}
+      />
+      <input
+        type="text"
+        id="userCity"
+        placeholder="Cidade"
+        required
+        {...register('userCity')}
+      />
+      <input
+        type="text"
+        id="userState"
+        placeholder="UF"
+        required
+        {...register('userState')}
+      />
     </UserForm>
   )
 }

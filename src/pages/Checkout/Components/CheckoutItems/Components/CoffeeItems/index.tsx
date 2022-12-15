@@ -3,52 +3,48 @@ import Expresso from '../../../../../../assets/Coffees/ExpressoTradicional.svg'
 import Latte from '../../../../../../assets/Coffees/Latte.svg'
 import { Minus, Plus, Trash } from 'phosphor-react'
 import { CheckoutCoffee, CoffeeCheckoutQuantity, CoffeeDelete } from './styles'
-
-// Interface
-interface CoffeeCheckout {
-  id: string
-  title: string
-  price: number
-  quantity: number
-  coffeePreview: string
-}
-
-// Mock Data
-export const coffees: CoffeeCheckout[] = [
-  {
-    id: '1',
-    title: 'Expresso Tradicional',
-    price: 9.9,
-    quantity: 1,
-    coffeePreview: Expresso,
-  },
-  {
-    id: '2',
-    title: 'Latte',
-    price: 9.9,
-    quantity: 1,
-    coffeePreview: Latte,
-  },
-]
-
-export const coffeePrice: number = coffees.reduce((acumulador, coffee) => {
-  return coffee.price * coffee.quantity + acumulador
-}, 0)
-
-export const priceToString = (price: number) => {
-  return price.toLocaleString('pt-BR', {
-    minimumFractionDigits: 2,
-  })
-}
+import { useContext } from 'react'
+import { CoffeeContext } from '../../../../../../context/DeliveryData'
 
 export function CoffeeItems() {
+  // Context
+  const { coffeeItems, handleAddCoffee, handleSubCoffee, handleDeleteCoffee } =
+    useContext(CoffeeContext)
+
+  // List of Coffee in Cart
+
+  const coffees = coffeeItems.filter((item) => item.checkout)
+
+  // Get Coffee ID
+
+  const getCoffeeId = (e: any) => {
+    return e.target.closest('.key').getAttribute('data-key')
+  }
+
+  // Context Actions
+
+  const addCoffee = (e: any) => {
+    const coffeeId = getCoffeeId(e)
+    handleAddCoffee(coffeeId, true)
+  }
+
+  const subCoffee = (e: any) => {
+    const coffeeId = getCoffeeId(e)
+    handleSubCoffee(coffeeId, true)
+  }
+
+  const deleteCoffee = (e: any) => {
+    const coffeeId = getCoffeeId(e)
+    handleDeleteCoffee(coffeeId)
+  }
+
   return (
     <>
       {coffees.map((coffee) => {
         return (
-          <CheckoutCoffee key={coffee.id}>
+          <CheckoutCoffee className="key" key={coffee.id} data-key={coffee.id}>
             {/* Img */}
-            <img src={coffee.coffeePreview} alt={`Cup of ${coffee.title}`} />
+            <img src={coffee.preview} alt={`Cup of ${coffee.title}`} />
             {/* Info */}
             <div className="coffeeInfo">
               {/* Title */}
@@ -57,17 +53,17 @@ export function CoffeeItems() {
               <div className="coffeeOptions">
                 {/* Quantity */}
                 <CoffeeCheckoutQuantity>
-                  <button>
+                  <button onClick={subCoffee} disabled={coffee.quantity <= 1}>
                     <Minus />
                   </button>
                   {coffee.quantity}
-                  <button>
+                  <button onClick={addCoffee} disabled={coffee.quantity >= 10}>
                     <Plus />
                   </button>
                 </CoffeeCheckoutQuantity>
                 {/* Delete */}
                 <CoffeeDelete>
-                  <button>
+                  <button onClick={deleteCoffee}>
                     <Trash />
                   </button>
                 </CoffeeDelete>
@@ -80,4 +76,10 @@ export function CoffeeItems() {
       })}
     </>
   )
+}
+
+export const priceToString = (price: number) => {
+  return price.toLocaleString('pt-BR', {
+    minimumFractionDigits: 2,
+  })
 }

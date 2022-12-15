@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 // Main Container
-export const CheckoutContainer = styled.div`
+export const CheckoutContainerForm = styled.form`
   display: flex;
   flex-direction: row;
   gap: 2rem;

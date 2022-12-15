@@ -6,12 +6,20 @@ import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { defaultTheme } from './styles/themes/default'
 import { GlobalStyle } from './styles/global'
+// Context
+import { DeliveryData } from './context/DeliveryData'
 
 export function App() {
   return (
+    // Themes
     <ThemeProvider theme={defaultTheme}>
+      {/* Routers */}
       <BrowserRouter>
-        <Router />
+        {/* Context Data */}
+        <DeliveryData>
+          {/* Routes */}
+          <Router />
+        </DeliveryData>
         <GlobalStyle />
       </BrowserRouter>
     </ThemeProvider>

@@ -10,15 +10,21 @@ export function Delivery() {
     <DeliveryContainer>
       <div>
         {/* Title */}
-        <DeliveryTitle>
-          <h1>Uhu! Pedido confirmado</h1>
-          <h3>Agora é só aguardar que logo o café chegará até você</h3>
-        </DeliveryTitle>
+        <Title />
         {/* Info */}
         <DeliveryInformation />
       </div>
       {/* Image */}
       <img src={DeliveryGuy} alt="Man Delivering Order" />
     </DeliveryContainer>
+  )
+}
+
+const Title = () => {
+  return (
+    <DeliveryTitle>
+      <h1>Uhu! Pedido confirmado</h1>
+      <h3>Agora é só aguardar que logo o café chegará até você</h3>
+    </DeliveryTitle>
   )
 }

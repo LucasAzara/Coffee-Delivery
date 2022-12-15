@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 // Form
 
-export const UserForm = styled.form`
+export const UserForm = styled.div`
   display: grid;
   grid-template-columns: 12.5rem 21.75rem 3.75rem;
 
