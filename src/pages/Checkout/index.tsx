@@ -57,7 +57,7 @@ export function Checkout() {
   // Navigate Manually to another page
   const navigate = useNavigate()
 
-  const { handleConfirmCartAction, totalItems } = useContext(CoffeeContext)
+  const { totalItems } = useContext(CoffeeContext)
 
   // ----------------------------------------------------
 

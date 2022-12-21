@@ -4,7 +4,6 @@ import { CheckoutButton, CheckoutCart, CheckoutTotal } from './styles'
 import { CoffeeItems, priceToString } from './Components/CoffeeItems'
 import { useContext } from 'react'
 import { CoffeeContext } from '../../../../context/DeliveryData'
-import Swal from 'sweetalert2'
 
 export function CheckoutItems() {
   // Context
